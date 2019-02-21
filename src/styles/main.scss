@@ -1,0 +1,47 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #191414;
+  font-family: 'Roboto', sans-serif;
+}
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  max-width: 600px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &-text {
+    text-align: center;
+    color: #fff;
+    animation: 3.2s spin infinite ease;
+  }
+
+  &-pic {
+    position: relative;
+    p {
+      margin: 0;
+      position: absolute;
+      left: 5px;
+      top: 15px;
+      transform: rotateZ(-10deg);
+    }
+    img {
+      width: 200px;
+    }
+  }
+}
+
+@keyframes spin {
+  0%{transform: rotateZ(0deg);}
+  25%{transform: rotateZ(-20deg);}
+  50%{transform: rotateZ(0deg);}
+  75%{transform: rotateZ(20deg);}
+  100%{transform: rotateZ(0deg);}
+}
