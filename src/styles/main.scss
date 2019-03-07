@@ -1,47 +1,68 @@
+$color: #191414;
+$bg: #2e222b;
+
 body {
   padding: 0;
   margin: 0;
-  background-color: #191414;
-  font-family: 'Roboto', sans-serif;
+  // font-family: 'Roboto', sans-serif;
+  background-color: $bg;
 }
 
-.intro {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+p {
+  margin: 0;
+}
 
-  max-width: 600px;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
+.width-100 {
+  display: block;
+  width: 100%;
+}
 
-  &-text {
-    text-align: center;
-    color: #fff;
-    animation: 3.2s spin infinite ease;
-  }
+.input-field, .pals {
+  text-align: center;
+  width: 500px;
+  display: block;
+  margin: auto;
+  border: none;
+  border-left: 2px solid $color;
+  border-right: 2px solid $color;
+}
 
-  &-pic {
-    position: relative;
+.input-field {
+  background-color: $color;
+  color: #fff;
+  font-size: 20px; 
+  padding: 20px 0px 20px 0px; /* Add some padding */
+}
+
+.pals {
+  list-style-type: none;
+  padding: 0;
+}
+
+.pals li p {
+  // text-align: center;
+  // background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: rgba(255, 255, 255, 0.884); /* Add a black text color */
+  display: block;
+}
+
+.pals {
+  li {
     p {
-      margin: 0;
-      position: absolute;
-      left: 5px;
-      top: 15px;
-      transform: rotateZ(-10deg);
-    }
-    img {
-      width: 200px;
+      &:hover:not(.header) {
+        background-color: rgb(33, 21, 39); /* Add a hover effect to all links, except for headers */
+        border-color: rgb(76, 156, 39);
+      }
+      border-bottom: 2px solid $color;
     }
   }
 }
 
-@keyframes spin {
-  0%{transform: rotateZ(0deg);}
-  25%{transform: rotateZ(-20deg);}
-  50%{transform: rotateZ(0deg);}
-  75%{transform: rotateZ(20deg);}
-  100%{transform: rotateZ(0deg);}
+@media screen and (max-width: 500px) {
+  .input-field, .pals {
+    width: 100%;
+  }
 }
