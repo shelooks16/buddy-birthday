@@ -1,19 +1,19 @@
 import dates from './birthday';
 
-const ul = document.querySelector('.pals');
-
-
 const createLi = () => {
-  for (const keys in dates) {
+  const ul = document.querySelector('.pals');
+  Object.keys(dates).map(()=>{
     const li = document.createElement('li');
-    const p = document.createElement('p');
+    li.classList.add('pals__li');
+    const wrapper = document.createElement('p');
+    wrapper.classList.add('pals__li-wrapper');
     const responsiveSpan = document.createElement('span');
-    p.appendChild( responsiveSpan );
     responsiveSpan.classList.add('width-100');
-    p.appendChild(document.createElement('span'));
-    li.appendChild(p);
+    wrapper.appendChild(responsiveSpan);
+    wrapper.appendChild(document.createElement('span'));
+    li.appendChild(wrapper);
     ul.appendChild(li);
-  }
+  });
 }
 
 const xx = ([nickname, nameBirth], [second, bir]) => {
@@ -29,24 +29,43 @@ const xx = ([nickname, nameBirth], [second, bir]) => {
   return days - days2;
 };
 
-const countDown = (li) => {
-  return setInterval(() => {
-    Object.entries(dates)
-      .sort(xx)
-      .forEach(([nickname, nameBirth], i) => {
-        const birthTime = new Date(`${nameBirth.birth}, ${new Date().getFullYear()} 00:00:00`);
-        const currentTime = new Date();
-        const difference = birthTime.getTime() - currentTime.getTime();
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const daysUntilBirth = difference < 0 ? "Уже была в этом году." : `${days} days left`;
+const getPhrase = (days) => {
+  if (!days) {
+    return "Днюха уже сегодня!!!";
+  } else if (days === 1) {
+    return "Днюха уже завтра!";
+  } else if (days < 0) {
+    return "Днюха уже была в этом году.";
+  }
+  return `${days} days left`;
+};
 
-        li[i].getElementsByTagName("span")[0].textContent =
-          `${nickname} (${nameBirth.name}). Днюха ${birthTime.toLocaleDateString('en-GB').substr(0, 5)}`;
+const showBirthdays = (li) => {
+  Object.entries(dates)
+    .sort(xx)
+    .map(([nickname, nameBirth], i) => {
+      const birthTime = new Date(`${nameBirth.birth}, ${new Date().getFullYear()} 00:00:00`);
+      const currentTime = new Date();
+      const difference = birthTime.getTime() - currentTime.getTime();
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24)) + 1;
+      // const hours = Math.floor(difference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+      const daysUntilBirth = getPhrase(days);
+      const birthPlaceholders = li[i].querySelectorAll("span");
 
-        li[i].getElementsByTagName("span")[1].textContent =
-          `${daysUntilBirth}`;
-      });
-  }, 1000);
+      if(days < 2) {
+        birthPlaceholders[1].classList.add('color-alert');  
+      }
+
+      birthPlaceholders[0].textContent =
+        `${nickname} (${nameBirth.name}). Днюха ${birthTime.toLocaleDateString('en-GB').substr(0, 5)}`;
+      birthPlaceholders[1].textContent =
+        `${daysUntilBirth}`;
+        
+      // return setInterval(() => {
+      //   birthPlaceholders[1].textContent =
+      //     `${daysUntilBirth}`;
+      // }, 1000);
+    });
 };
 
 const filterPals = (input, li) => {
@@ -63,4 +82,4 @@ const filterPals = (input, li) => {
   })
 };
 
-export { countDown, filterPals, createLi };
+export { showBirthdays, filterPals, createLi };

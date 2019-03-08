@@ -9,6 +9,6 @@ export default {
   },
   "Adam": {
     "name": "Саня",
-    "birth": "June 1"
+    "birth": "June 7"
   }
 };

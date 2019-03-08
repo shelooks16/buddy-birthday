@@ -2,19 +2,11 @@ $color: #191414;
 $bg: #2e222b;
 
 body {
+  // font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;
-  // font-family: 'Roboto', sans-serif;
   background-color: $bg;
-}
-
-p {
-  margin: 0;
-}
-
-.width-100 {
-  display: block;
-  width: 100%;
+  overflow-x: hidden;
 }
 
 .input-field, .pals {
@@ -30,39 +22,26 @@ p {
 .input-field {
   background-color: $color;
   color: #fff;
-  font-size: 20px; 
-  padding: 20px 0px 20px 0px; /* Add some padding */
+  font-size: 1.25rem;
+  padding: 20px 0px 20px 0px;
 }
 
 .pals {
   list-style-type: none;
   padding: 0;
-}
-
-.pals li p {
-  // text-align: center;
-  // background-color: #f6f6f6; /* Grey background color */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  color: rgba(255, 255, 255, 0.884); /* Add a black text color */
-  display: block;
-}
-
-.pals {
-  li {
-    p {
+  &__li {
+    &-wrapper {
+      display: block;
+      text-decoration: none;
+      padding: 12px;
+      margin: 0;
+      border-bottom: 2px solid $color;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.884);
       &:hover:not(.header) {
-        background-color: rgb(33, 21, 39); /* Add a hover effect to all links, except for headers */
+        background-color: rgb(33, 21, 39);
         border-color: rgb(76, 156, 39);
       }
-      border-bottom: 2px solid $color;
     }
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .input-field, .pals {
-    width: 100%;
   }
 }
