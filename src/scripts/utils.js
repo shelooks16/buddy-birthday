@@ -1,23 +1,40 @@
-import dates from '../birthday.json';
 import ghostImg from '../images/death.png';
+import dates from '../birthday.json';
 
 const createLi = () => {
   const ul = document.querySelector('.pals');
-  Object.keys(dates).map(() => {
-    const li = document.createElement('li');
-    li.classList.add('pals__li');
+  const newLiNodes = Object.keys(dates).map(() => {
+    const newLi = document.createElement('li');
+    newLi.classList.add('pals__li');
     const wrapper = document.createElement('p');
     wrapper.classList.add('pals__li-wrapper');
     const responsiveSpan = document.createElement('span');
     responsiveSpan.classList.add('width-100');
     wrapper.appendChild(responsiveSpan);
     wrapper.appendChild(document.createElement('span'));
-    li.appendChild(wrapper);
-    ul.appendChild(li);
+    newLi.appendChild(wrapper);
+    ul.appendChild(newLi);
+    return newLi;
   });
-}
+  return newLiNodes;
+};
 
-const xx = ([nickname, nameBirth], [second, bir]) => {
+const filterBuddies = (liNodes) => {
+  return function (e) {
+    e.preventDefault();
+    const inputValue = this.value.toUpperCase();
+    liNodes.forEach(li => {
+      const buddyName = li.querySelector('span').textContent.toUpperCase();
+      if (buddyName.includes(inputValue)) {
+        li.style.display = "";
+      } else {
+        li.style.display = "none";
+      }
+    })
+  };
+};
+
+const sortByDaysLeft = ([nickname, nameBirth], [second, bir]) => {
   const birthTime = new Date(`${nameBirth.birth}, ${new Date().getFullYear()} 00:00:00`);
   const currentTime = new Date();
   const difference = birthTime.getTime() - currentTime.getTime();
@@ -59,49 +76,49 @@ const spawnGhostAnimation = e => {
   }
 }
 
-const insertStylesAndAnimation = (days, birthPlaceholders) => {
-  if (days >= 0 && days <= 8) {
-    birthPlaceholders[1].classList.add('theday-color');
+const insertStylesAndAnimation = (daysLeft, infoSpans) => {
+  if (daysLeft >= 0 && daysLeft < 8) {
+    infoSpans[1].classList.add('theday-color');
   }
-  if (!days) {
+  if (!daysLeft) {
     // select li
-    const { parentElement } = birthPlaceholders[0];
+    const { parentElement } = infoSpans[0];
     parentElement.addEventListener('click', spawnGhostAnimation);
     parentElement.classList.add('theday-cursor');
   }
 };
 
-const showBirthdays = (li) => {
-  Object.entries(dates)
-    .sort(xx)
-    .map(([nickname, nameBirth], i) => {
-      const birthTime = new Date(`${nameBirth.birth}, ${new Date().getFullYear()} 00:00:00`);
-      const currentTime = new Date();
-      const difference = birthTime.getTime() - currentTime.getTime();
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24)) + 1;
-      const birthPhrase = getPhrase(days);
-      const birthPlaceholders = li[i].querySelectorAll("span");
+const getFormatedBirthDate = (birthDate) => {
+  return new Date(`${birthDate}, ${new Date().getFullYear()} 00:00:00`);
+}
 
-      insertStylesAndAnimation(days, birthPlaceholders);
-      birthPlaceholders[0].textContent =
-        `${nickname} (${nameBirth.name}). Днюха ${birthTime.toLocaleDateString('en-GB').substr(0, 5)}`;
-      birthPlaceholders[1].textContent =
-        `${birthPhrase}`;
-    });
+const getDaysLeft = (birthDate) => {
+  const birthTime = getFormatedBirthDate(birthDate).getTime();
+  const currentTime = new Date().getTime();
+  const difference = birthTime - currentTime;
+  return Math.floor(difference / (1000 * 60 * 60 * 24)) + 1;
 };
 
-const filterPals = (input, li) => {
-  const inputValue = input.value.toUpperCase();
+const insertDatesInLi = (births, liArray, currentLi) => {
+  births.sort(sortByDaysLeft)
+    .map(([nickname, { name, birth }]) => {
+      const birthTime = getFormatedBirthDate(birth).toLocaleDateString('en-GB').substr(0, 5);
+      const daysLeft = getDaysLeft(birth);
+      const birthPhrase = getPhrase(daysLeft);
+      const infoSpans = liArray[currentLi].querySelectorAll("span");
 
-  li.forEach(el => {
-    const birthTime = el.querySelector('span').textContent;
-    if (birthTime.toUpperCase().includes(inputValue)) {
-      el.style.display = "";
-    } else {
-      el.style.display = "none";
-    }
+      insertStylesAndAnimation(daysLeft, infoSpans);
+      infoSpans[0].textContent = `${nickname} (${name}). Днюха ${birthTime}`;
+      infoSpans[1].textContent = `${birthPhrase}`;
+      currentLi++;
+    })
+}
 
-  })
+const loadDates = (li) => {
+  const birthWill = Object.entries(dates).filter(([, { birth }]) => getDaysLeft(birth) >= 0)
+  const birthWas = Object.entries(dates).filter(([, { birth }]) => getDaysLeft(birth) < 0)
+  insertDatesInLi(birthWill, li, 0);
+  insertDatesInLi(birthWas, li, birthWill.length);
 };
 
-export { showBirthdays, filterPals, createLi };
+export { createLi, loadDates, filterBuddies }

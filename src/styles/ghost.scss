@@ -10,6 +10,8 @@
   animation: ghost-float 2.2s ease-in-out infinite;
 }
 
+
+
 @keyframes pass-by {
   0% {transform: translate(-260px, 0rem);} 
   100% {transform: translate(100vw, 6rem);}

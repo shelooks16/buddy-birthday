@@ -2056,11 +2056,6 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-t@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/t/-/t-0.5.1.tgz#7d9192201ed7f8bbf61598ac73660d8ffcc3b578"
-  integrity sha1-fZGSIB7X+Lv2FZisc2YNj/zDtXg=
-
 tar@^4:
   version "4.4.8"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.8.tgz#b19eec3fde2a96e64666df9fdb40c5ca1bc3747d"

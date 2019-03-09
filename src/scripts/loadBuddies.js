@@ -1,12 +1,15 @@
-import { showBirthdays, filterPals, createLi } from './utils';
+// TODO: refactor sortByDaysLeft in ./utils
+import {
+  createLi,
+  loadDates,
+  filterBuddies
+} from './utils';
 
-const load = () => {
-  createLi();
-  const li = document.querySelectorAll('li');
-  showBirthdays(li);
-  const input = document.querySelector('.input-field'); 
-  input.addEventListener("keyup", ()=>filterPals(input, li));
+const loadBuddies = () => {
+  const liNodes = createLi();
+  loadDates(liNodes);
+  document.querySelector('.input-field').addEventListener("keyup", filterBuddies(liNodes));
 };
 
 
-export default load;
+export default loadBuddies;
