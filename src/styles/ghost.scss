@@ -1,0 +1,21 @@
+.ghost-wrap {
+  position: fixed;
+  z-index: 99;
+  top: 0rem;
+  animation: pass-by 6s linear infinite;
+}
+
+.ghost {
+  width: 220px;
+  animation: ghost-float 2.2s ease-in-out infinite;
+}
+
+@keyframes pass-by {
+  0% {transform: translate(-260px, 0rem);} 
+  100% {transform: translate(100vw, 6rem);}
+}
+@keyframes ghost-float {
+  0% {transform: translate3d(0, 0px, 0);} 
+  50% {transform: translate3d(0, 60px, 0);}
+  100% {transform: translate3d(0, 0px, 0);}
+}

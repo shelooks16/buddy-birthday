@@ -1,8 +1,9 @@
-import dates from './birthday';
+import dates from '../birthday.json';
+import ghostImg from '../images/death.png';
 
 const createLi = () => {
   const ul = document.querySelector('.pals');
-  Object.keys(dates).map(()=>{
+  Object.keys(dates).map(() => {
     const li = document.createElement('li');
     li.classList.add('pals__li');
     const wrapper = document.createElement('p');
@@ -40,6 +41,36 @@ const getPhrase = (days) => {
   return `${days} days left`;
 };
 
+const spawnGhostAnimation = e => {
+  const ghostWrap = document.querySelector('.ghost-wrap');
+  if (!ghostWrap) {
+    const wrap = document.createElement('div');
+    wrap.classList.add('ghost-wrap');
+    const ghost = document.createElement('img');
+    ghost.src = ghostImg;
+    ghost.classList.add('ghost');
+    wrap.appendChild(ghost);
+    document.body.appendChild(wrap);
+
+    const animationPeriod = 6 * 1000;
+    setTimeout(() => {
+      wrap.remove();
+    }, animationPeriod);
+  }
+}
+
+const insertStylesAndAnimation = (days, birthPlaceholders) => {
+  if (days >= 0 && days <= 8) {
+    birthPlaceholders[1].classList.add('theday-color');
+  }
+  if (!days) {
+    // select li
+    const { parentElement } = birthPlaceholders[0];
+    parentElement.addEventListener('click', spawnGhostAnimation);
+    parentElement.classList.add('theday-cursor');
+  }
+};
+
 const showBirthdays = (li) => {
   Object.entries(dates)
     .sort(xx)
@@ -48,23 +79,14 @@ const showBirthdays = (li) => {
       const currentTime = new Date();
       const difference = birthTime.getTime() - currentTime.getTime();
       const days = Math.floor(difference / (1000 * 60 * 60 * 24)) + 1;
-      // const hours = Math.floor(difference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-      const daysUntilBirth = getPhrase(days);
+      const birthPhrase = getPhrase(days);
       const birthPlaceholders = li[i].querySelectorAll("span");
 
-      if(days < 2) {
-        birthPlaceholders[1].classList.add('color-alert');  
-      }
-
+      insertStylesAndAnimation(days, birthPlaceholders);
       birthPlaceholders[0].textContent =
         `${nickname} (${nameBirth.name}). Днюха ${birthTime.toLocaleDateString('en-GB').substr(0, 5)}`;
       birthPlaceholders[1].textContent =
-        `${daysUntilBirth}`;
-        
-      // return setInterval(() => {
-      //   birthPlaceholders[1].textContent =
-      //     `${daysUntilBirth}`;
-      // }, 1000);
+        `${birthPhrase}`;
     });
 };
 

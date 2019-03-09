@@ -1,11 +1,15 @@
-$color: #191414;
-$bg: #2e222b;
+$main-bg: #2e222b;
+$input-bg: #191414;
+$hover-bg: rgb(33, 21, 39);
+$hover-border: rgb(76, 156, 39);
+$main-color: rgba(255, 255, 255, 0.884);
 
 body {
   // font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;
-  background-color: $bg;
+  background-color: $main-bg;
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -15,12 +19,12 @@ body {
   display: block;
   margin: auto;
   border: none;
-  border-left: 2px solid $color;
-  border-right: 2px solid $color;
+  border-left: 2px solid $input-bg;
+  border-right: 2px solid $input-bg;
 }
 
 .input-field {
-  background-color: $color;
+  background-color: $input-bg;
   color: #fff;
   font-size: 1.25rem;
   padding: 20px 0px 20px 0px;
@@ -30,17 +34,18 @@ body {
   list-style-type: none;
   padding: 0;
   &__li {
+    background-color: main-bg;
     &-wrapper {
       display: block;
       text-decoration: none;
       padding: 12px;
       margin: 0;
-      border-bottom: 2px solid $color;
+      border-bottom: 2px solid $input-bg;
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.884);
+      color: $main-color;
       &:hover:not(.header) {
-        background-color: rgb(33, 21, 39);
-        border-color: rgb(76, 156, 39);
+        background-color: $hover-bg;
+        border-color: $hover-border;
       }
     }
   }
