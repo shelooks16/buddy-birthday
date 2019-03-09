@@ -3,3 +3,9 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .img-wrap {
+    animation: pass-by 5s linear infinite;
+  }
+}
