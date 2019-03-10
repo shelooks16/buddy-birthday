@@ -34,17 +34,8 @@ const filterBuddies = (liNodes) => {
   };
 };
 
-const sortByDaysLeft = ([nickname, nameBirth], [second, bir]) => {
-  const birthTime = new Date(`${nameBirth.birth}, ${new Date().getFullYear()} 00:00:00`);
-  const currentTime = new Date();
-  const difference = birthTime.getTime() - currentTime.getTime();
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-  const birthTime2 = new Date(`${bir.birth}, ${new Date().getFullYear()} 00:00:00`);
-  const difference2 = birthTime2.getTime() - currentTime.getTime();
-  const days2 = Math.floor(difference2 / (1000 * 60 * 60 * 24));
-
-  return days - days2;
+const sortByDaysLeft = ([, { birth }], [, { birth: birth2 }]) => {
+  return getDaysLeft(birth) - getDaysLeft(birth2);
 };
 
 const getPhrase = (days) => {

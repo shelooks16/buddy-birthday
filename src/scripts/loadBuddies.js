@@ -1,4 +1,3 @@
-// TODO: refactor sortByDaysLeft in ./utils
 import {
   createLi,
   loadDates,

@@ -1,3 +1,5 @@
+@import 'vars';
+
 @media screen and (max-width: 500px) {
   .input-field, .pals {
     width: 100%;
@@ -7,5 +9,18 @@
 @media screen and (max-width: 768px) {
   .img-wrap {
     animation: pass-by 5s linear infinite;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .pals {
+    &__li {
+      &-wrapper {
+        &:hover:not(.header) {
+          background-color: $main-bg;
+          border-color: $input-bg;
+        }
+      }
+    }
   }
 }

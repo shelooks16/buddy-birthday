@@ -1,8 +1,4 @@
 {
-  "Днюха сегодня": {
-    "name": "прикол",
-    "birth": "March 9"
-  },
   "sirniy666": {
     "name": "Виталик",
     "birth": "September 5"
@@ -13,13 +9,13 @@
   },
   "Adam": {
     "name": "Александр",
-    "birth": "June 7"
+    "birth": "June 1"
   },
   "blizzboy": {
     "name": "Эдмунд",
     "birth": "March 24"
   },
-  "Клокит": {
+  "myownreality": {
     "name": "Владислав",
     "birth": "March 24"
   },
@@ -31,8 +27,64 @@
     "name": "Руслан",
     "birth": "March 22"
   },
-  "ksanderfix": {
+  "Fred": {
+    "name": "Дмитрий",
+    "birth": "August 26"
+  },
+  "Griffen": {
+    "name": "Марина",
+    "birth": "July 3"
+  },
+  "Bilan": {
+    "name": "Вика",
+    "birth": "September 28"
+  },
+  "Elzbieta": {
+    "name": "Никита",
+    "birth": "July 9"
+  },
+  "Elsworth": {
     "name": "Андрей",
-    "birth": "March 22"
+    "birth": "April 5"
+  },
+  "93PREMIUM": {
+    "name": "Максим",
+    "birth": "March 27"
+  },
+  "leemoreneed": {
+    "name": "Лиза",
+    "birth": "October 14"
+  },
+  "Дианди": {
+    "name": "Диана",
+    "birth": "November 1"
+  },
+  "bodjomi": {
+    "name": "Богдан",
+    "birth": "May 8"
+  },
+  "Simon": {
+    "name": "Саймон",
+    "birth": "May 31"
+  },
+  "Kostenko": {
+    "name": "Богдан",
+    "birth": "March 15"
+  },
+  "uncle Ingi": {
+    "name": "Александр",
+    "birth": "March 21"
+  },
+  "Dvoryak": {
+    "name": "Александр",
+    "birth": "September 12"
+  },
+  "Natali": {
+    "name": "Наташа",
+    "birth": "August 30"
+  },
+  "Sokol": {
+    "name": "Никита",
+    "birth": "July 26"
   }
 }
