@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
+  "homepage": "https://shelooks16.github.io/buddy-birthday",
   "scripts": {
     "clear": "rm -rf dist/ .cache",
     "build-test": "parcel build src/index.html --public-url=./ --no-minify --no-cache --no-source-maps --experimental-scope-hoisting",
