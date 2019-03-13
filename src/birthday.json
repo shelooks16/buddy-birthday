@@ -1,90 +1,112 @@
-{
-  "sirniy666": {
+[
+  {
+    "nickname": "sirniy666",
     "name": "Виталик",
     "birth": "September 5"
   },
-  "AndrewB": {
+  {
+    "nickname": "AndrewB",
     "name": "Андрей",
     "birth": "April 24"
   },
-  "Adam": {
+  {
+    "nickname": "Adam",
     "name": "Александр",
     "birth": "June 1"
   },
-  "blizzboy": {
+  {
+    "nickname": "blizzboy",
     "name": "Эдмунд",
     "birth": "March 24"
   },
-  "myownreality": {
+  {
+    "nickname": "myownreality",
     "name": "Владислав",
     "birth": "March 24"
   },
-  "Beyond": {
+  {
+    "nickname": "Beyond",
     "name": "Александр",
     "birth": "August 29"
   },
-  "CptWest": {
+  {
+    "nickname": "CptWest",
     "name": "Руслан",
     "birth": "March 22"
   },
-  "Fred": {
+  {
+    "nickname": "Fred",
     "name": "Дмитрий",
     "birth": "August 26"
   },
-  "Griffen": {
+  {
+    "nickname": "Griffen",
     "name": "Марина",
     "birth": "July 3"
   },
-  "Bilan": {
+  {
+    "nickname": "Bilan",
     "name": "Вика",
     "birth": "September 28"
   },
-  "Elzbieta": {
+  {
+    "nickname": "Elzbieta",
     "name": "Никита",
     "birth": "July 9"
   },
-  "Elsworth": {
+  {
+    "nickname": "Elsworth",
     "name": "Андрей",
     "birth": "April 5"
   },
-  "93PREMIUM": {
+  {
+    "nickname": "93PREMIUM",
     "name": "Максим",
     "birth": "March 27"
   },
-  "leemoreneed": {
+  {
+    "nickname": "leemoreneed",
     "name": "Лиза",
     "birth": "October 14"
   },
-  "Дианди": {
+  {
+    "nickname": "Diandi",
     "name": "Диана",
     "birth": "November 1"
   },
-  "bodjomi": {
+  {
+    "nickname": "bodjomi",
     "name": "Богдан",
     "birth": "May 8"
   },
-  "Simon": {
+  {
+    "nickname": "Simon",
     "name": "Саймон",
     "birth": "May 31"
   },
-  "Kostenko": {
+  {
+    "nickname": "Kostenko",
     "name": "Богдан",
     "birth": "March 15"
   },
-  "uncle Ingi": {
+  {
+    "nickname": "uncle Ingi",
     "name": "Александр",
     "birth": "March 21"
   },
-  "Dvoryak": {
+  {
+    "nickname": "Dvoryak",
     "name": "Александр",
     "birth": "September 12"
   },
-  "Natali": {
+  {
+    "nickname": "Natali",
     "name": "Наташа",
     "birth": "August 30"
   },
-  "Sokol": {
+  {
+    "nickname": "Sokol",
     "name": "Никита",
     "birth": "July 26"
   }
-}
+]

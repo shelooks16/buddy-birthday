@@ -3,7 +3,7 @@ import dates from '../birthday.json';
 
 const createLi = () => {
   const ul = document.querySelector('.pals');
-  const newLiNodes = Object.keys(dates).map(() => {
+  const newLiNodes = dates.map(() => {
     const newLi = document.createElement('li');
     newLi.classList.add('pals__li');
     const wrapper = document.createElement('p');
@@ -34,7 +34,7 @@ const filterBuddies = (liNodes) => {
   };
 };
 
-const sortByDaysLeft = ([, { birth }], [, { birth: birth2 }]) => {
+const sortByDaysLeft = ({ birth }, { birth: birth2 }) => {
   return getDaysLeft(birth) - getDaysLeft(birth2);
 };
 
@@ -92,7 +92,7 @@ const getDaysLeft = (birthDate) => {
 
 const insertDatesInLi = (births, liArray, currentLi) => {
   births.sort(sortByDaysLeft)
-    .map(([nickname, { name, birth }]) => {
+    .map(({ nickname, name, birth }) => {
       const birthTime = getFormatedBirthDate(birth).toLocaleDateString('en-GB').substr(0, 5);
       const daysLeft = getDaysLeft(birth);
       const birthPhrase = getPhrase(daysLeft);
@@ -106,8 +106,8 @@ const insertDatesInLi = (births, liArray, currentLi) => {
 }
 
 const loadDates = (li) => {
-  const birthWill = Object.entries(dates).filter(([, { birth }]) => getDaysLeft(birth) >= 0)
-  const birthWas = Object.entries(dates).filter(([, { birth }]) => getDaysLeft(birth) < 0)
+  const birthWill = dates.filter(({ birth }) => getDaysLeft(birth) >= 0)
+  const birthWas = dates.filter(({ birth }) => getDaysLeft(birth) < 0)
   insertDatesInLi(birthWill, li, 0);
   insertDatesInLi(birthWas, li, birthWill.length);
 };
