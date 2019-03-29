@@ -58,12 +58,12 @@ const spawnGhostAnimation = e => {
     ghost.src = ghostImg;
     ghost.classList.add('ghost');
     wrap.appendChild(ghost);
-    document.body.appendChild(wrap);
-
-    const animationPeriod = 6 * 1000;
-    setTimeout(() => {
-      wrap.remove();
-    }, animationPeriod);
+    ghost.onload = () => {
+      document.body.appendChild(wrap);
+      setTimeout(() => {
+        wrap.remove();
+      }, 6 * 1000);
+    };
   }
 }
 
