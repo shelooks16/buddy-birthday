@@ -15,7 +15,6 @@ body {
   margin: 0;
   background-color: $main-bg;
   position: relative;
-  overflow-x: hidden;
 }
 
 .input-field, .pals {
@@ -39,7 +38,7 @@ body {
   list-style-type: none;
   padding: 0;
   &__li {
-    background-color: main-bg;
+    background-color: $main-bg;
     &-wrapper {
       display: block;
       text-decoration: none;
@@ -48,7 +47,7 @@ body {
       border-bottom: 2px solid $input-bg;
       font-size: 1.2rem;
       color: $main-color;
-      &:hover:not(.header) {
+      &:hover:not(.theday-snake) {
         background-color: $hover-bg;
         border-color: $hover-border;
       }

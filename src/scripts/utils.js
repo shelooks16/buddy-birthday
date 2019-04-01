@@ -72,10 +72,16 @@ const insertStylesAndAnimation = (daysLeft, infoSpans) => {
     infoSpans[1].classList.add('theday-color');
   }
   if (!daysLeft) {
-    // select li
+    // select p element
     const { parentElement } = infoSpans[0];
+    ['top', 'bottom', 'left', 'right'].forEach(part => {
+      const snakie = document.createElement('span');
+      snakie.classList.add(`theday-snake-${part}`);
+      parentElement.appendChild(snakie);
+    });
+
+    parentElement.classList.add('theday-cursor', 'theday-snake');
     parentElement.addEventListener('click', spawnGhostAnimation);
-    parentElement.classList.add('theday-cursor');
   }
 };
 

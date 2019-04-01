@@ -3,6 +3,7 @@
 @media screen and (max-width: 500px) {
   .input-field, .pals {
     width: 100%;
+    border: none;
   }
 }
 
@@ -10,9 +11,6 @@
   .img-wrap {
     animation: pass-by 5s linear infinite;
   }
-}
-
-@media screen and (max-width: 992px) {
   .pals {
     &__li {
       &-wrapper {

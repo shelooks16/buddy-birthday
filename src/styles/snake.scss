@@ -1,0 +1,55 @@
+@import 'vars';
+
+$snake: 1.5px;
+$snake-speed: 2.4s;
+
+@mixin colorGradient ($part) {
+  $direction: 'dummy';
+  @if $part == bottom {
+    $direction: left;
+  } @else if $part == top {
+    $direction: right;
+  } @else if $part == left {
+    $direction: top;
+  } @else if $part == right {
+    $direction: bottom;
+  }
+  background: linear-gradient(to $direction, $main-bg, $hover-border);
+}
+
+@mixin snakie ($part) {
+  position: absolute;
+  top: if($part==bottom, calc(100% - #{$snake}), 0);
+  left: if($part==right, calc(100% - #{$snake}), 0);
+  width: if($part==top or $part==bottom, 100%, $snake); 
+  height: if($part==top or $part==bottom, $snake, 100%);
+  animation: snake-+$part $snake-speed linear infinite;
+  animation-delay: if($part==right or $part==left, calc(#{$snake-speed} / 2), 0s);
+  @include colorGradient($part);
+}
+
+.theday-snake {
+  position: relative;
+  overflow: hidden;
+  &-top { @include snakie(top) }
+  &-right { @include snakie(right) }
+  &-bottom { @include snakie(bottom) }
+  &-left { @include snakie(left) }
+}
+
+@keyframes snake-top {
+  0% {transform: translateX(-100%)}
+  100% {transform: translateX(100%)}
+}
+@keyframes snake-left {
+  0% {transform: translateY(100%)}
+  100% {transform: translateY(-100%)}
+}
+@keyframes snake-right {
+  0% {transform: translateY(-100%)}
+  100% {transform: translateY(100%)}
+}
+@keyframes snake-bottom {
+  0% {transform: translateX(100%)}
+  100% {transform: translateX(-100%)}
+}

@@ -1,12 +1,15 @@
+@import 'vars';
+
 .width-100 {
   display: block;
   width: 100%;
 }
 
-.theday-color {
-  color: rgb(89, 184, 45);
-}
-
-.theday-cursor {
-  cursor: pointer;
+.theday {
+  &-color {
+    color: rgb(89, 184, 45);
+  }
+  &-cursor {
+    cursor: pointer;
+  }
 }
