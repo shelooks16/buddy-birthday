@@ -16,12 +16,12 @@
   "devDependencies": {
     "cssnano": "^4.1.10",
     "normalize.css": "^8.0.1",
-    "parcel-plugin-inliner": "^1.0.6",
-    "parcel-plugin-sw-precache": "^1.0.4",
-    "sass": "^1.17.2"
+    "parcel-plugin-inliner": "^1.0.14",
+    "parcel-plugin-sw-precache": "^1.1.2",
+    "sass": "^1.26.10"
   },
   "dependencies": {
-    "gh-pages": "^2.0.1",
-    "parcel-bundler": "^1.12.1"
+    "gh-pages": "^3.1.0",
+    "parcel-bundler": "^1.12.4"
   }
 }
