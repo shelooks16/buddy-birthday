@@ -7,9 +7,9 @@
   "scripts": {
     "clear": "rm -rf dist/ .cache",
     "build-test": "parcel build src/index.html --public-url=./ --no-minify --no-cache --no-source-maps --experimental-scope-hoisting",
-    "build": "yarn clear && parcel build src/index.html --public-url=./ --experimental-scope-hoisting",
+    "build": "npm run clear && parcel build src/index.html --public-url=./ --experimental-scope-hoisting",
     "start": "parcel src/index.html --port=3000 --open",
-    "predeploy": "yarn build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "license": "MIT",
