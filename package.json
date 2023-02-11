@@ -10,7 +10,7 @@
     "build": "npm run clear && parcel build src/index.html --public-url=./ --experimental-scope-hoisting",
     "start": "parcel src/index.html --port=3000 --open",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist && surge dist buddy-birth.surge.sh"
   },
   "license": "MIT",
   "devDependencies": {
