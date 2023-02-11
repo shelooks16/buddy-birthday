@@ -85,6 +85,32 @@ const insertStylesAndAnimation = (daysLeft, infoSpans) => {
   }
 };
 
+const allSigns = [
+  "Овен",
+  "Телец",
+  "Близнецы",
+  "Рак",
+  "Лев",
+  "Дева",
+  "Весы",
+  "Скорпион",
+  "Стрелец",
+  "Козерог",
+  "Водолей",
+  "Рыбы",
+];
+
+const getZodiacSign = (date) => {
+  const sign =
+    Number(
+      new Intl.DateTimeFormat("fr-TN-u-ca-persian", {
+        month: "numeric",
+      }).format(date)
+    ) - 1;
+
+  return allSigns[sign];
+};
+
 const getFormatedBirthDate = (birthDate) => {
   return new Date(`${birthDate}, ${new Date().getFullYear()} 00:00:00`);
 }
@@ -99,13 +125,15 @@ const getDaysLeft = (birthDate) => {
 const insertDatesInLi = (births, liArray, currentLi) => {
   births.sort(sortByDaysLeft)
     .map(({ nickname, name, birth }) => {
-      const birthTime = getFormatedBirthDate(birth).toLocaleDateString('en-GB').substr(0, 5);
+      const date = getFormatedBirthDate(birth);
+      const birthTime = date.toLocaleDateString('en-GB').substr(0, 5);
       const daysLeft = getDaysLeft(birth);
       const birthPhrase = getPhrase(daysLeft);
+      const zodiac = getZodiacSign(date);
       const infoSpans = liArray[currentLi].querySelectorAll("span");
 
       insertStylesAndAnimation(daysLeft, infoSpans);
-      infoSpans[0].textContent = `${nickname} (${name}). Днюха ${birthTime}`;
+      infoSpans[0].textContent = `${nickname} (${name}). ${zodiac}. Днюха ${birthTime}`;
       infoSpans[1].textContent = `${birthPhrase}`;
       currentLi++;
     })
